@@ -195,8 +195,8 @@
         $.get('/get-filename-id', (data, status) => {
             console.log(data);
             $('div#uploaded-file').html(
-                `<div id="${data.file_id}" class="border-bottom border-secondary rounded-pill p-2 mb-3 d-flex justify-content-around align-items-center">
-                    <div>${data.filename}</div>
+                `<div id="${data.file_id}" class="rounded-pill p-2 mb-3 bg-black d-flex flex-column justify-content-around align-items-center">
+                    <div class="pb-2">${data.filename}</div>
                     <div>
                         <button class="btn btn-outline-danger border-0" type="button" id="delete-file">
                             Delete
