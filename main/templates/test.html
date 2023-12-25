@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<div class="container-fluid border border-dark mb-3 py-3 px-5 rounded-pill" id="files-list" style="max-height: 300px; overflow-y: auto;">
+    
+</div>
+
+<div class="container-fluid w-60">
+    <form action="{% url 'main:upload' %}" method="post" class="file_form"
+    enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="input-group bg-transparent text-white ">
+            <input type="file" name="file" class="form-control bg-transparent text-white" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+            <button class="btn btn-outline-success" type="submit" id="inputGroupFileAddon04">Upload</button>
+        </div>
+        <p class="text-danger upload-info"></p>
+
+    </form>
+    
+</div>
+
+{% endblock %}
+
+
+{% block extra_script %}
+
+<script>
+    const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+
+    $(document).ready(function() {
+
+        function loadList() {
+            $.get('/get-files-list', (data, status) => {
+                const listItems = data;
+                $('div#files-list').html(listItems)
+                $('button#delete-file').click(handleDelete);
+                $('p.upload-info').text(data.success)
+            })
+        }
+        loadList();
+        $('button#delete-file').click(handleDelete);
+
+        function handleDelete(e) {
+            console.log($(this).parent().parent().attr('id'))
+            const itemId = $(this).parent().parent().attr('id');
+
+            $.ajax({
+                url: `/delete-file/${itemId}`,
+                method: 'POST',
+                headers: {'X-CSRFToken': csrftoken},
+                success: function (data) {
+                    loadList();
+                }
+            })
+        }
+
+        /* $('div#files-list').on('click', function(e) {
+            e.preventDefault();
+            const form = e.target.
+            $.ajax({
+                url: $('form')
+            })
+            $.get('/get-files-list', (data, status, error) => {
+                $('div#files-list').html(data);
+            })
+        }) */
+        $('form.file_form').on('submit', function (event) {
+            event.preventDefault()
+            const file = $('input[type="file"]')[0].files[0];
+            if (!file) {
+                $('p.upload-info').text('No file selected!');
+                return;
+            }
+            if (!file.name.endsWith('.pdf')) {
+                $('p.upload-info').text('Not a pdf file');
+                return;
+            }
+            
+            const formdata = new FormData();
+            formdata.append('file', file)
+            $.ajax({
+                url: '/upload',
+                method: 'POST',
+                dataType: 'json',
+                data: formdata,
+                processData: false,
+                contentType: false,
+                headers: 
+                {
+                    'X-CSRFToken': csrftoken
+                },
+                success: function(data) {
+                    if (data.success) {
+                        $('p.upload-info').removeClass('text-danger');
+                        $('p.upload-info').addClass('text-success');
+                        $('p.upload-info').text(data.success);
+                        loadList();
+
+                    } else {
+                        $('p.upload-info').text(data.error);
+                    }
+                },
+                error: function (data) {
+                    $('p.upload-info').text(data.error);
+                },
+
+            });
+        });
+    });
+
+    
+</script>
+{% endblock %}

@@ -1,0 +1,14 @@
+<ul>
+    {% for file in user.files.all %}
+    <li class="mb-2 border-bottom border-success" id="{{file.id}}">
+        <div id="delete-file" class="d-inline ps-3 d-flex justify-content-between">
+            
+            <span>{{file.name}}</span>
+            <button id="delete-file" type="submit" class="btn btn-sm text-danger mb-1 delete-file">
+                <i class="bi bi-x-lg"></i>
+            </button>
+        </div>
+
+    </li>
+    {% endfor %}
+</ul>

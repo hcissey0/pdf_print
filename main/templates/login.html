@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container-fluid w-100">  
+  <div class="row">
+    <div class="col text-center">
+      <h1 ><strong>Login</strong></h1>
+
+    </div>
+    <div class="col-12 text-center">
+      <i class="bi bi-person-fill p-3 mx-auto text-success" style="font-size: 5em;"></i>
+    </div>
+  </div>
+  <form action="{% url 'main:login' %}" method="post" id="loadout" class="form">
+    {% csrf_token %}
+    <div class="form-group my-3 text-center">
+      <input type="text" name="username" id="username" placeholder="Username" required
+      class="form-control-lg text-center rounded-pill border border-success bg-transparent text-white">
+    </div>
+    <div class="form-group my-3 text-center">
+      <input type="password" name="password" id="password" placeholder="Password" required
+      class="form-control-lg text-center rounded-pill border border-success bg-transparent text-white">
+    </div>
+
+    <div class="form-group my-5 text-center">
+      <button type="submit" id="loadout" class="btn btn-lg btn-success rounded-pill">Login</button>
+    </div>
+  </form>
+
+<!-- <form action="{% url 'main:login' %}" method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <input type="submit" value="Submit">
+</form> -->
+</div>
+{% endblock %}
+  

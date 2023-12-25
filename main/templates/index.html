@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<div class="container-fluid text-center">
+    <div class="row">
+        <div class="col-12 mb-5">
+            <h6 class="d-flex">
+                {% if user.is_authenticated %}
+                <strong>
+                    <div class="bg-dark p-3 rounded-pill d-inline">
+                        Hello 
+                        <div class="bg-success p-2 rounded-pill d-inline"> {{user.first_name}} </div>
+                    </div>
+                </strong>
+                {% else %}
+                <strong>
+                    <div class="bg-dark p-3 rounded-pill d-inline">
+                        Welcome to 
+                        <div class="bg-success p-2 rounded-pill d-inline"> pdfPRINT </div>
+                    </div>
+                </strong>
+                {% endif %}
+            </h6>
+        </div>
+        {% if not user.is_authenticated %}
+        <div class="col-12 col-xl-6 mb-5">
+            <h1 class="mb-4" style="font-size: 4em;">
+                <strong>
+                    Prepare your
+                    <div class="bg-success p-2 rounded-pill d-inline px-4"> PDF's </div>
+                    <br>
+                    for printing
+                </strong>
+            </h1>
+            <a href="login " id="loadout" class="btn btn-block btn-lg btn-outline-success rounded-pill">
+                Start preparing  
+                <i class="bi bi-arrow-right"></i>
+            </a>
+        </div>
+        {% else %}
+        <div class="col-12">
+            <div class="row">
+                <div class="col-12">
+                    <h1 class="mb-4" style="font-size: 3em;">
+                        <strong>
+                            What would you like to work on today?
+                        </strong>
+                    </h1>
+                </div>
+                <div class="col-12 d-md-flex justify-content-around text-center">
+                    <div class="card text-white text-center bg-dark mb-3 mx-auto rounded-circle p-5" style="max-width: 30rem;">
+                        
+                        <div class="card-body">
+                          <h5 class="card-title text-success bg-black rounded-pill py-2" style="font-size: 2em;">
+                            <strong>
+                                <div>Simplex</div>
+                                <div>Printing</div>
+                            </strong>
+                        </h5>
+                          <p class="card-text">With this, you can prepare the PDF for printing with a Simplex Printer, a printer that only prints one page at a time. </p>
+                          <p class="card-text">(The printer does not print both front and back pages at the same time)</p>
+                          <a href="/simplex" id="loadout" class="btn btn-lg btn-outline-success rounded-pill">Do This</a>
+                        </div>
+                    </div>
+                    <div class="card text-white text-center bg-dark mb-3 mx-auto rounded-circle p-5" style="max-width: 30rem;">
+                        
+                        <div class="card-body">
+                          <h5 class="card-title text-success bg-black rounded-pill py-2" style="font-size: 2em;">
+                            <strong>
+                                <div>Duplex</div>
+                                <div>Printing</div>
+                            </strong>
+                        </h5>
+                          <p class="card-text">With this, you can prepare the PDF file for printing with a Duplex printer, a type of printer that can print two pages at a time.</p>
+                          <p class="card-text">(The printer prints both front and back pages at the same time)</p>
+                          <a href="/duplex" id="loadout" class="btn btn-lg btn-outline-success rounded-pill">Do This</a>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        <div class="col-12 col-xl-6 mb-5">
+        </div>
+    </div>
+</div>
+
+{% endblock %}

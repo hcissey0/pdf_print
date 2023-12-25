@@ -1,0 +1,123 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="csrf-token" content="{{ csrf_token }}">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="{% static 'img/icon.png' %}" type="image/x-icon">
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'bootstrap-icons/font/bootstrap-icons.min.css' %}">
+  <!-- <link rel="stylesheet" href="{% static 'style.css' %}"> -->
+  <title>PDF Print</title>
+</head>
+<body class="bg-black text-white">
+  <nav class="navbar navbar-expand navbar-dark bg-transparent m-1 mb-4">
+    <div class="container-fluid">
+      <a href="/" id="loadout" class="navbar-brand">
+        <h4 class="text-white p-2 rounded-pill">
+          <span><strong>pdf</strong></span><strong class="text-success" style="font-size: 2em;">PRINT</strong>
+        </h4>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse text-end d-flex justify-content-end" id="navbarSupportedContent">
+        <!-- <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
+          <li class="nav-item">
+            <a class="nav-link m-2" id="loadout" aria-current="page" href="{% url 'main:index' %}">Home</a>
+          </li>
+          <li class="nav-item m-2">
+            <a class="nav-link" id="loadout" href="{% url 'main:about' %}">About</a>
+          </li>
+          
+        </ul> -->
+        {% if user.is_authenticated %}
+        <div class="nav-item m-2">
+          <a href="/logout" id="loadout" class="btn btn-outline-success rounded-pill">Logout</a>
+        </div>
+        {% else %}
+        <div class="nav-item m-2">
+          <a href="/login" id="loadout" class="btn btn-outline-success rounded-pill">Login</a>
+        </div>
+        <div class="nav-item m-2">
+          <a href="/register" id="loadout" class="btn btn-success rounded-pill">Register</a>
+        </div>
+        {% endif %}
+        <!-- <form class="d-flex m-2">
+          
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit"><i class="bi bi-search"></i></button>
+        </form> -->
+      </div>
+    </div>
+  </nav>
+  {% csrf_token %}
+
+  {% for message in messages %}
+  <div class="container-fluid w-50">
+    <div 
+    {% if message.tags == 'error' %} 
+    class="alert text-center alert-danger alert-dismissible fade show"
+    {% else %}
+    class="alert text-center alert-{{message.tags}} alert-dismissible fade show"
+    {% endif %}
+    role="alert">
+      <strong>{{message}}</strong>
+      <button type="button" data-bs-dismiss="alert" class="btn-close" aria-label="Close" ></button>
+    </div>
+  </div>
+  {% endfor %}
+
+
+
+  <div class="container-fluid page-element" style="padding-bottom: 200px;">
+    {% block content %}
+
+    {% endblock %}
+  </div>
+  
+  
+  
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+  <script src="{% static 'script.js' %}"></script>
+
+  {% block extra_script %}
+  {% endblock %}
+  
+  
+  
+  <footer class="footer bg-dark fixed-bottom py-5 rounded-top-5">
+    <div class="row">
+      <div class="col d-flex justify-content-center align-items-center">
+        &copy; 2023 - <a href="{% url 'main:about' %}" class="btn btn-sm btn-outline-success ms-1">hcissey0</a>
+
+      </div>
+      <div class="col d-flex justify-content-center align-items-center">
+        
+
+        <a href="https://www.facebook.com/hcissey0" target="_blank" class="btn text-success" style="font-size: 20px;">
+          <i class="bi bi-facebook"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/hcissey0" target="_blank" class="btn text-success" style="font-size: 20px;">
+          <i class="bi bi-linkedin"></i>
+        </a>
+        <a href="https://www.github.com/hcissey0" target="_blank" class="btn text-success" style="font-size: 20px;">
+          <i class="bi bi-github"></i>
+        </a>
+        <a href="https://www.twitter.com/hcissey0" target="_blank" class="btn text-success" style="font-size: 20px;">
+          <i class="bi bi-twitter"></i>
+        </a>
+        <a href="https://www.instagram.com/hcissey0" target="_blank" class="btn text-success" style="font-size: 20px;">
+          <i class="bi bi-instagram"></i>
+        </a>
+
+      </div>
+    </div>
+    
+  </footer>
+</body>
+</html>
