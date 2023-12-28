@@ -5,7 +5,8 @@ from .views import (
     about, test_upload,
     upload_file, get_files_list,
     delete_file, simplex,
-    get_filename_id, download
+    get_filename_id, download,
+    duplex,
 )
 
 app_name = 'main'
@@ -23,4 +24,5 @@ urlpatterns = [
     path('simplex', view=simplex, name='simplex'),
     path('get-filename-id', view=get_filename_id, name='get-filename-id'),
     path('download/<str:filename>', view=download, name='download'),
+    path('duplex', view=duplex, name='duplex'),
 ]
