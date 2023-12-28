@@ -17,7 +17,7 @@ urlpatterns = [
     path('register', view=register_view, name='register'),
     path('logout', view=logout_view, name='logout'),
     path('about', view=about, name='about'),
-    path('test', view=test_upload, name='test'),
+    # path('test', view=test_upload, name='test'),
     path('upload', view=upload_file, name='upload'),
     path('get-files-list', view=get_files_list, name='get-files-list'),
     path('delete-file/<int:file_id>', view=delete_file, name='delete-file'),

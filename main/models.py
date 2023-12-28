@@ -12,11 +12,6 @@ import string
 
 def ascii_filename(instance, filename):
     cleaned_filename = unicodedata.normalize('NFKD', filename).encode('ASCII', 'ignore').decode()
-    # cleaned_filename = ''.join(
-    #     c
-    #     for c in cleaned_filename
-    #     if c in string.ascii_letters + string.digits + '_-.'
-    # )
     return 'uploads/' + cleaned_filename
 
 class PdfFile(models.Model):
