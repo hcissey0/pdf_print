@@ -3,6 +3,59 @@
 
 {% block content %}
 
-<h1>This is the about page</h1>
-<p>PDF Print allows you to upload a PDF and select your printer type (simplex or duplex). Based on your selection, it will generate a printable booklet. If you select simplex, you will receive two PDFs (front pages and back pages) to print separately. If you select duplex, you will receive one PDF suitable for duplex printing.</p>
+
+
+<div class="d-flex align-items-start">
+    <div class="nav flex-column nav-pills me-5 mb-5" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+        <button class="mb-4 nav-link active rounded-pill" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">
+            Overview
+        </button>
+        <button class="mb-4 nav-link rounded-pill" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">
+            Simplex
+        </button>
+        <button class="mb-4 nav-link rounded-pill" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">
+            Duplex
+        </button>
+        <button class="mb-4 nav-link rounded-pill" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">
+            Settings
+        </button>
+    </div>
+    <div class="tab-content" id="v-pills-tabContent">
+        <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab" tabindex="0">
+            <div class="col-12 col-xl-6 mb-5">
+                <h1 class="mb-4" style="font-size: 2em;">
+                    
+                    Project
+                    <strong>
+                        <div class="bg-primary p-2 rounded-pill d-inline px-3 me-3">
+                            inspiration
+                        </div>
+                    </strong>
+                </h1>
+            </div>
+            <p>
+                    I got the inspiration for this project when I got my first printer.
+                    <br>
+                    It was a simplex printer (a printer that prints one page at a time).
+                PDF aaPrint allows you to upload a PDF and select your printer type (simplex or duplex).
+                Based on your selection, it will generate a printable booklet.
+                If you select simplex, you will receive two PDFs (front pages and back pages) to print separately.
+                If you select duplex, you will receive one PDF suitable for duplex printing.
+            </p>
+
+        </div>
+        <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab" tabindex="0">
+
+            <h1>This is the about page</h1>
+        </div>
+        <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab" tabindex="0">
+            ghffkhj
+        </div>
+        <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab" tabindex="0">
+            testing
+        </div>
+    </div>
+</div>
+
+<p class="text-lg">hi</p>
 {% endblock %}

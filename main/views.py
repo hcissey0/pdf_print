@@ -103,10 +103,10 @@ def get_files_list(request: HttpRequest):
 @login_required
 def delete_file(request: HttpRequest, file_id):
     if not PdfFile.objects.filter(id=file_id):
-        return JsonResponse({"error": "not found"})
+        return JsonResponse({"error": "not found"}, status=404)
     file = PdfFile.objects.get(pk=file_id)
     if not file:
-        return JsonResponse({'error': 'File not found.'})
+        return JsonResponse({'error': 'File not found.'}, status=404)
     file.delete()
     return JsonResponse({'success': "File deleted."})
    
@@ -136,7 +136,7 @@ def simplex(request: HttpRequest):
             pages = handle_simplex_file(file_url, page_mode, book_form, bind_mode)
 
             if not pages:
-                return JsonResponse({'error': 'Error occured'})
+                return JsonResponse({'error': 'Error occured'}, status=404)
             
             
             return JsonResponse({
@@ -146,7 +146,7 @@ def simplex(request: HttpRequest):
                 }
             })
         else:
-            return JsonResponse({'error': "There's an error somewhere"})
+            return JsonResponse({'error': "There's an error somewhere"}, status=404)
             
 
     return render(request, 'simplex.html')
@@ -560,14 +560,14 @@ def duplex(request: HttpRequest):
 
             pages = handle_duplex_file(file_url, page_mode, book_form, bind_mode)
             if not pages:
-                return JsonResponse({'error': 'Error occured'})
+                return JsonResponse({'error': 'Error occured'}, status=404)
             return JsonResponse({
                 'success': {
                     'duplex': pages.get('duplex').split('/')[-1],
                 }
             })
         else:
-            return JsonResponse({'error': "There's an error somewhere"})
+            return JsonResponse({'error': "There's an error somewhere"}, status=404)
     return render(request, 'duplex.html')
 
 def handle_duplex_file(file_url, page_mode, book_form, bind_mode):
@@ -932,14 +932,14 @@ def download(request: HttpRequest, filename: str):
     path = url[:-4] + '/'
     print("path from download: ", path)
     if not os.path.exists(path):
-        return JsonResponse({'error': 'Not found'})
+        return JsonResponse({'error': 'Not found'}, status=404)
     print("url: ", url)
     print('path: ', path)
 
     file_path = path + filename
     print('file path from dowload: ', file_path)
     if not os.path.exists(file_path):
-        return JsonResponse({'error': 'Not found'})
+        return JsonResponse({'error': 'Not found'}, status=404)
     
     file_wrapper = FileWrapper(open(file_path, 'rb'))
     response = FileResponse(

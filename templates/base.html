@@ -10,46 +10,50 @@
   <link rel="shortcut icon" href="{% static 'img/icon.png' %}" type="image/x-icon">
   <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
   <link rel="stylesheet" href="{% static 'bootstrap-icons/font/bootstrap-icons.min.css' %}">
-  <!-- <link rel="stylesheet" href="{% static 'style.css' %}"> -->
+  <link rel="stylesheet" href="{% static 'style.css' %}">
   <title>PDF Print</title>
 </head>
-<body class="bg-black text-white">
-  <nav class="navbar navbar-expand navbar-dark bg-transparent m-1 mb-4">
+<body class="">
+  <nav class="navbar navbar-expand bg-transparent m-1 mb-4">
     <div class="container-fluid">
       <a href="/" id="loadout" class="navbar-brand">
-        <h4 class="text-white p-2 rounded-pill">
-          <span><strong>pdf</strong></span><strong class="text-success" style="font-size: 2em;">PRINT</strong>
+        <h4 class=" p-2 rounded-pill">
+          <span><strong>pdf</strong></span><strong class="text-primary" style="font-size: 2em;">PRINT</strong>
         </h4>
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse text-end d-flex justify-content-end" id="navbarSupportedContent">
-        <!-- <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
-          <li class="nav-item">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
+          <!-- <li class="nav-item">
             <a class="nav-link m-2" id="loadout" aria-current="page" href="{% url 'main:index' %}">Home</a>
-          </li>
+          </li> -->
           <li class="nav-item m-2">
             <a class="nav-link" id="loadout" href="{% url 'main:about' %}">About</a>
           </li>
           
-        </ul> -->
+        </ul>
+        <a class="me-4 p-2 toggle bg-black text-white d-flex rounded-pill justify-content-center align-items-center"
+        style="width: 40px; height: 40px;">
+            <i class="ball bi bi-moon-fill"></i>
+        </a>
         {% if user.is_authenticated %}
         <div class="nav-item m-2">
-          <a href="/logout" id="loadout" class="btn btn-outline-success rounded-pill">Logout</a>
+          <a href="/logout" id="loadout" class="btn btn-outline-primary rounded-pill">Logout</a>
         </div>
         {% else %}
         <div class="nav-item m-2">
-          <a href="/login" id="loadout" class="btn btn-outline-success rounded-pill">Login</a>
+          <a href="/login" id="loadout" class="btn btn-outline-primary rounded-pill">Login</a>
         </div>
         <div class="nav-item m-2">
-          <a href="/register" id="loadout" class="btn btn-success rounded-pill">Register</a>
+          <a href="/register" id="loadout" class="btn btn-primary rounded-pill">Register</a>
         </div>
         {% endif %}
         <!-- <form class="d-flex m-2">
           
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit"><i class="bi bi-search"></i></button>
+          <button class="btn btn-outline-primary" type="submit"><i class="bi bi-search"></i></button>
         </form> -->
       </div>
     </div>
@@ -73,7 +77,7 @@
 
 
 
-  <div class="container-fluid page-element" style="padding-bottom: 200px;">
+  <div class="container-fluid" style="padding-bottom: 200px;">
     {% block content %}
 
     {% endblock %}
@@ -85,33 +89,65 @@
   <script src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
   <script src="{% static 'script.js' %}"></script>
 
+  <script>
+    const theme = "";
+    $(document).ready(() => {
+        console.log(localStorage.getItem("theme"))
+        if (!localStorage.getItem("theme")) {
+            localStorage.setItem("theme", "light")
+        }
+        if (localStorage.getItem("theme") === "dark") {
+            doDark();
+        }     
+    });
+    
+      
+    $('a.toggle').click((e) => {
+        if (localStorage.getItem("theme") === "light") {
+            localStorage.setItem("theme", "dark");
+        } else {
+            localStorage.setItem("theme", "light")
+        }
+        $('body').css("transition", ".5s")
+        doDark();
+    });
+
+    function doDark() {
+        $('body').toggleClass('bg-black text-white')
+        $('a.toggle').toggleClass('bg-black text-white bg-white text-black')
+        $('i.ball').toggleClass('bi-sun-fill bi-moon-fill')
+        $('nav.navbar').toggleClass('navbar-dark')
+        $('div#form').toggleClass("bg-dark-subtle text-black bg-dark text-white")
+    }
+  </script>
   {% block extra_script %}
   {% endblock %}
   
   
   
-  <footer class="footer bg-dark fixed-bottom py-5 rounded-top-5">
+  <footer class="footer bg-dark text-white fixed-bottom py-5 rounded-top-5">
     <div class="row">
       <div class="col d-flex justify-content-center align-items-center">
-        &copy; 2023 - <a href="{% url 'main:about' %}" class="btn btn-sm btn-outline-success ms-1">hcissey0</a>
+        &copy; 2024 - hcissey0
+        
 
       </div>
       <div class="col d-flex justify-content-center align-items-center">
         
 
-        <a href="https://www.facebook.com/hcissey0" target="_blank" class="btn text-success" style="font-size: 20px;">
+        <a href="https://www.facebook.com/hcissey0" target="_blank" class="btn text-primary" style="font-size: 20px;">
           <i class="bi bi-facebook"></i>
         </a>
-        <a href="https://www.linkedin.com/in/hcissey0" target="_blank" class="btn text-success" style="font-size: 20px;">
+        <a href="https://www.linkedin.com/in/hcissey0" target="_blank" class="btn text-primary" style="font-size: 20px;">
           <i class="bi bi-linkedin"></i>
         </a>
-        <a href="https://www.github.com/hcissey0" target="_blank" class="btn text-success" style="font-size: 20px;">
+        <a href="https://www.github.com/hcissey0" target="_blank" class="btn text-primary" style="font-size: 20px;">
           <i class="bi bi-github"></i>
         </a>
-        <a href="https://www.twitter.com/hcissey0" target="_blank" class="btn text-success" style="font-size: 20px;">
+        <a href="https://www.twitter.com/hcissey0" target="_blank" class="btn text-primary" style="font-size: 20px;">
           <i class="bi bi-twitter"></i>
         </a>
-        <a href="https://www.instagram.com/hcissey0" target="_blank" class="btn text-success" style="font-size: 20px;">
+        <a href="https://www.instagram.com/hcissey0" target="_blank" class="btn text-primary" style="font-size: 20px;">
           <i class="bi bi-instagram"></i>
         </a>
 

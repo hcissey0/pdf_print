@@ -55,6 +55,7 @@ MIDDLEWARE = [
 
 CORS_ALLOW_ALL_ORIGINS = True
 
+CSRF_TRUSTED_ORIGINS = ['http://192.168.50.190', 'http://localhost']
 
 LOGIN_URL = 'main:login'
 
@@ -128,7 +129,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
-
+STATIC_ROOT = '/data/static'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]

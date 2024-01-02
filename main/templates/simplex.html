@@ -8,23 +8,23 @@
         <strong>
             <!-- Welcome to the
             <br> -->
-            <span class="bg-success rounded-pill p-2">Simplex Printer</span>
+            <span class="bg-primary rounded-pill p-2">Simplex Printer</span>
             <br>
             PDF optimisation for printing
         </strong>
     </h1>
 </div>
 
-<div class="container-fluid bg-dark rounded-5 p-4" style="max-width: 80%;">
+<div id="form" class="container-fluid bg-dark-subtle text-black rounded-5 p-4" style="max-width: 80%;">
     <div class="container-fluid d-flex flex-column align-items-center justify-content-center">
         <div class="row">
             <!-- <div class="col-12 text-center">
-                <i class="bi bi-printer text-success" style="font-size: 7em;"></i>
+                <i class="bi bi-printer text-primary" style="font-size: 7em;"></i>
             </div> -->
             <div class="col-12 text-center mb-3">
                 <form action="/simplex" method="post" class="do-simplex">
                     {% csrf_token %}
-                    <div class="row">
+                    <div class="row ">
 
                         <div class="col-12">
                             <h5>
@@ -35,21 +35,21 @@
 
                             <div>
                                 <input type="radio" class="btn-check" name="page_mode" id="1-page-mode" autocomplete="off" value="1" checked>
-                            <label class="btn btn-outline-success rounded-start-pill" for="1-page-mode">
+                            <label class="btn btn-outline-primary rounded-start-pill" for="1-page-mode">
                                 1 per page
                             </label>
                             </div>
 
                             <div>
                                 <input type="radio" class="btn-check" name="page_mode" id="2-page-mode" autocomplete="off" value="2">
-                            <label class="btn btn-outline-success rounded-start-0 rounded-end-0" for="2-page-mode">
+                            <label class="btn btn-outline-primary rounded-start-0 rounded-end-0" for="2-page-mode">
                                 2 per page
                             </label>
                             </div>
 
                             <div>
                                 <input type="radio" class="btn-check" name="page_mode" id="4-page-mode" autocomplete="off" value="4">
-                            <label class="btn btn-outline-success rounded-end-pill" for="4-page-mode">
+                            <label class="btn btn-outline-primary rounded-end-pill" for="4-page-mode">
                                 4 per page
                             </label>
                             </div>
@@ -61,11 +61,11 @@
                                 Select the <strong>book form</strong> you want.
                                 <div class="text-secondary">
                                     <small>
-                                        <strong class="text-success">Booklet: </strong>alternates the pages.
+                                        <strong class="text-primary">Booklet: </strong>alternates the pages.
                                     </small>
                                     <br>
                                     <small>
-                                        <strong class="text-success">Continuous: </strong>arrange the pages from start to end.
+                                        <strong class="text-primary">Continuous: </strong>arrange the pages from start to end.
                                     </small>
                                 </div>
                             </h5>
@@ -74,14 +74,14 @@
 
                             <div>
                                 <input type="radio" class="btn-check" name="book_form" id="booklet_form" autocomplete="off" value="booklet" checked>
-                            <label class="btn btn-outline-success rounded-start-pill" for="booklet_form">
+                            <label class="btn btn-outline-primary rounded-start-pill" for="booklet_form">
                                 Booklet
                             </label>
                             </div>
 
                             <div>
                                 <input type="radio" class="btn-check" name="book_form" id="continuous_form" autocomplete="off" value="continuous">
-                            <label class="btn btn-outline-success rounded-end-pill" for="continuous_form">
+                            <label class="btn btn-outline-primary rounded-end-pill" for="continuous_form">
                                 Continuous
                             </label>
                             </div>
@@ -95,11 +95,11 @@
                                 Select the <strong>bind mode</strong> you want.
                                 <div class="text-secondary">
                                     <small>
-                                        <strong class="text-success">Left bind: </strong>starts reading from left.
+                                        <strong class="text-primary">Left bind: </strong>starts reading from left.
                                     </small>
                                     <br>
                                     <small>
-                                        <strong class="text-success">Right bind: </strong>starts reading from right.
+                                        <strong class="text-primary">Right bind: </strong>starts reading from right.
                                     </small>
                                 </div>
                             </h5>
@@ -108,14 +108,14 @@
 
                             <div>
                                 <input type="radio" class="btn-check" name="bind_mode" id="left-bind" autocomplete="off" value="left" checked>
-                            <label class="btn btn-outline-success rounded-start-pill" for="left-bind">
+                            <label class="btn btn-outline-primary rounded-start-pill" for="left-bind">
                                 Left Bind
                             </label>
                             </div>
 
                             <div>
                                 <input type="radio" class="btn-check" name="bind_mode" id="right-bind" autocomplete="off" value="right">
-                            <label class="btn btn-outline-success rounded-end-pill" for="right-bind">
+                            <label class="btn btn-outline-primary rounded-end-pill" for="right-bind">
                                 Right Bind
                             </label>
                             </div>
@@ -129,7 +129,7 @@
                             <form action="" class="uploader" enctype="multipart/form-data">
                                 <div class="input-group bg-dark">
                                     <input type="file" class="form-control uploader" id="inputGroupFile" aria-describedby="inputgroupfileaddon" aria-label="Upload">
-                                    <button class="btn btn-success uploader" id="inputgroupfileaddon">Upload</button>
+                                    <button class="btn btn-primary uploader" id="inputgroupfileaddon">Upload</button>
                                 </div>
                             </form>
                         </div>
@@ -144,7 +144,7 @@
                 <p style="font-size: x-large;">
                     With your uploaded pdf
                 </p>
-                <div id="uploaded-file">
+                <div id="uploaded-file" class="text-white">
 
                 </div>
             </div>
@@ -155,7 +155,7 @@
             </div>
             <div class="col-6 text-center">
                 <p style="font-size: x-large;">
-                    a <strong class="text-success">front</strong> pages pdf
+                    a <strong class="text-primary">front</strong> pages pdf
                 </p>
                 <div id="frontpages-file">
 
@@ -163,7 +163,7 @@
             </div>
             <div class="col-6 text-center">
                 <p style="font-size: x-large;">
-                    and a <strong class="text-success">back</strong> pages pdf
+                    and a <strong class="text-primary">back</strong> pages pdf
                 </p>
                 <div id="backpages-file">
 
@@ -202,7 +202,7 @@
                             Delete
                             <!-- <i class="bi bi-x-lg"></i> -->
                         </button>
-                        <button class="btn btn-success border-0 rounded-pill do-simplex" type="button">
+                        <button class="btn btn-primary border-0 rounded-pill do-simplex" type="button">
                             Start
                             <!-- <i class="bi bi-check-lg"></i> -->
                         </button>
@@ -235,7 +235,7 @@
                 $('button#delete-file').parent().parent().addClass('d-none');
                 $('div.uploader').removeClass('d-none');
                 $('input').attr('disabled', false);
-                $('small.file-info').removeClass('text-success');
+                $('small.file-info').removeClass('text-primary');
                 $('small.file-info').addClass('text-secondary');
                 $('small.file-info').text(data.success);
                 $('div#frontpages-file').html('');
@@ -275,7 +275,7 @@
             $('div#frontpages-file').html(
                 `
                 <a href="${frontpages_url}"
-                    class="btn btn-lg btn-outline-success border-0">
+                    class="btn btn-lg btn-outline-primary border-0">
                     <i class="bi bi-filetype-pdf" style="font-size: 3em;"></i>
                 </a>
                 `
@@ -283,7 +283,7 @@
             $('div#backpages-file').html(
                 `
                 <a href="${backpages_url}"
-                    class="btn btn-lg btn-outline-success border-0">
+                    class="btn btn-lg btn-outline-primary border-0">
                     <i class="bi bi-filetype-pdf" style="font-size: 3em;"></i>
                 </a>
                 `
@@ -292,6 +292,13 @@
         
         .fail((data) => {
             console.log(data);
+            triggerLoad(false);
+            $('input').attr('disabled', false);
+            $('button.do-simplex').attr('disabled', false);
+            $('button#delete-file').attr('disabled', false);
+            $('small.file-info').removeClass('text-primary');
+            $('small.file-info').addClass('text-danger');
+            $('small.file-info').text(data.responseJSON.error);
 
         })
 
@@ -301,20 +308,21 @@
         if (t === true) {
             $('div#frontpages-file').append(
                 `
-                <div class="spinner-border text-success" role="status">
+                <div class="spinner-border text-primary" role="status">
                     <span class="visually-hidden">Loading...</span>
                 </div>
                 `
             );
             $('div#backpages-file').append(
                 `
-                <div class="spinner-border text-success" role="status">
+                <div class="spinner-border text-primary" role="status">
                     <span class="visually-hidden">Loading...</span>
                 </div>
                 `
             );
         } else {
             $('div#frontpages-file').html("");
+            $('div#backpages-file').html("");
         }
     }
 
@@ -358,14 +366,14 @@
         })
         .done(function() {
             $('small.file-info').removeClass('text-danger');
-            $('small.file-info').addClass('text-success');
+            $('small.file-info').addClass('text-primary');
 
             $('div.uploader').addClass('d-none');
             
         })
         .fail(function () {
             $('small.file-info').addClass('text-danger');
-            
+            $('small.file-info').text('Error occured. File probably too large.')
         })
         .then(getFile)
 
